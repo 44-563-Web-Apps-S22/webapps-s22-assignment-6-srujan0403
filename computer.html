@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <title>computer order</title>
+    <h2>Srujan Kumar Reddy Yeruva orders a computer</h2>
+    
+    <form>
+        
+        <input type ="checkbox" id="checkbox_1" name="checkbox_1" value="extra">
+        <label for="checkbox_1">Extra memory</label><br>
+    
+        <input type ="checkbox" id="checkbox_2" name="checkbox_2" value="mouse"> 
+        <label for="checkbox_2">Mouse</label><br>
+    
+        <input type ="checkbox" id="checkbox_3" name="checkbox_3" value="cell"> 
+        <label for="checkbox_3">Cell service</label><br>
+    
+        <input type="button" onclick="orderComputer()" value="Order a computer">
+    </form>
+    <p id="result">This text will be replaced </p>
+    <form>
+        <label for="property_name">Enter a property name </label>
+        <input type ="text" id="property_name" name="property_name" value=engraved> <br>
+    
+        <label for="property_value">Enter a value</label>
+        <input type ="text" id="property_value" name="property_value"> <br>
+    
+        <input type="button" onclick="updateComputer()" value="Update the computer">
+    </form>
+    
+    <p id="property">This text will be replaced </p>
+    
+    <script> 
+        var my_computer={}
+        out = document.getElementById("result")
+        function orderComputer(){
+            var my_computer={}
+            console.log("Getting form values")
+            extra=document.getElementById("checkbox_1").checked
+            mouse=document.getElementById("checkbox_2").checked
+            cell=document.getElementById("checkbox_3").checked
+            if(extra){
+               my_computer.extra=true
+            } else {
+                my_computer.extra=false
+            }
+            if(mouse){
+               my_computer.mouse=true
+            } else {
+                my_computer.mouse=false
+            }
+            if(cell){
+               my_computer.cell=true
+            } else {
+                my_computer.cell=false
+            }
+            document.getElementById("result").innerHTML = "extra: " + my_computer.extra + "   mouse: " + my_computer.mouse + "   cell: " + my_computer.cell
+        }
+        out = document.getElementById("property")
+        function updateComputer(){
+            name=document.getElementById("property_name").value
+            value=document.getElementById("property_value").value
+            my_computer[name]=value
+            out.innerHTML = "my_computer[]=  " + JSON.stringify(my_computer);
+        }
+    </script>
+    
+    </body>
+    </html> 
